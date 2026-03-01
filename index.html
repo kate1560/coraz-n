@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0b12" />
+    <meta
+      name="description"
+      content="Detalle digital romántico: corazón dibujándose y mensaje emotivo."
+    />
+
+    <title>Un detalle para ti ❤️</title>
+
+    <!-- Google Fonts (elegante y premium) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="sr-only">
+      <h1>Detalle digital romántico</h1>
+    </header>
+
+    <main id="contenido" class="page" aria-label="Detalle romántico">
+      <section class="card" aria-label="Animación del corazón y mensaje">
+        <div class="brand" aria-hidden="true">
+          <span class="brand__dot"></span>
+          <span class="brand__text">Para ti</span>
+        </div>
+
+        <div class="heart-wrap" aria-label="Corazón dibujándose" role="img">
+          <!-- SVG accesible -->
+          <svg
+            class="heart"
+            viewBox="0 0 512 512"
+            width="260"
+            height="260"
+            aria-label="Corazón animado"
+          >
+            <defs>
+              <!-- Glow sutil -->
+              <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="3.5" result="blur" />
+                <feColorMatrix
+                  in="blur"
+                  type="matrix"
+                  values="
+                    1 0 0 0 0
+                    0 0.2 0 0 0
+                    0 0 0.35 0 0
+                    0 0 0 1 0"
+                  result="tinted"
+                />
+                <feMerge>
+                  <feMergeNode in="tinted" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+
+              <!-- Gradiente romántico -->
+              <linearGradient id="heartGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="var(--heart-1)" />
+                <stop offset="55%" stop-color="var(--heart-2)" />
+                <stop offset="100%" stop-color="var(--heart-3)" />
+              </linearGradient>
+            </defs>
+
+            <!-- Sombra/halo detrás -->
+            <path
+              class="heart__glow"
+              d="M256 464s-144-84-208-176C16 232 24 152 80 112c48-36 112-24 152 24 40-48 104-60 152-24 56 40 64 120 32 176-64 92-208 176-208 176z"
+              fill="none"
+              stroke="url(#heartGrad)"
+              stroke-width="14"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              filter="url(#softGlow)"
+              opacity="0.45"
+            />
+
+            <!-- Trazo principal (se dibuja) -->
+            <path
+              id="heartPath"
+              class="heart__path"
+              d="M256 464s-144-84-208-176C16 232 24 152 80 112c48-36 112-24 152 24 40-48 104-60 152-24 56 40 64 120 32 176-64 92-208 176-208 176z"
+              fill="none"
+              stroke="url(#heartGrad)"
+              stroke-width="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+
+        <div class="message" id="message" aria-live="polite">
+          <p class="message__kicker" id="kicker">Te lo digo con el corazón…</p>
+          <h2 class="message__title" id="title">Eres mi lugar seguro.</h2>
+          <p class="message__body" id="body">
+            Gracias por existir y por hacer que todo tenga sentido.
+          </p>
+
+          <button class="cta" id="replayBtn" type="button">
+            Ver de nuevo
+          </button>
+        </div>
+
+        <footer class="foot" aria-label="Firma del detalle">
+          <span class="foot__line"></span>
+          <p class="foot__text">Hecho con amor ❤️</p>
+        </footer>
+      </section>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
